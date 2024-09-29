@@ -21,14 +21,20 @@ const UserList: React.FC = () => {
       dispatch(setUsers([]));
     }
     dispatch(setLoading(true));
+    const cleanupTimeout = setTimeout(() => {
+      dispatch(setUsers([]));
+      dispatch(setLoading(false));
+    }, 20000);
+
     try {
       const response = await fetch(`/api/users?page=${page}`);
       const data = await response.json();
-      if (data.users.length) dispatch(appendUsers(data.users)); // Append new users
+      if (data.users.length) dispatch(appendUsers(data.users));
       dispatch(setHasMore(data.hasMore));
     } catch (error) {
       console.error('Failed to fetch users:', error);
     } finally {
+      clearTimeout(cleanupTimeout);
       dispatch(setLoading(false));
     }
   };
@@ -44,7 +50,7 @@ const UserList: React.FC = () => {
     if (hasMore)
       setPage((prev) => {
         const newPage = prev + 1;
-        fetchUsers(newPage); // Fetch new users for the updated page
+        fetchUsers(newPage);
         return newPage;
       });
   };

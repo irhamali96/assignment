@@ -1,4 +1,3 @@
-// userSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface User {
@@ -25,7 +24,7 @@ const userSlice = createSlice({
   reducers: {
     setUsers(state, action: PayloadAction<Array<{ id: number; name: string; email: string }>>) {
       state.users = action.payload;
-      state.hasMore = true; // Reset hasMore when setting users
+      state.hasMore = true;
     },
     appendUsers(state, action: PayloadAction<Array<{ id: number; name: string; email: string }>>) {
       state.users = [...state.users, ...action.payload];
@@ -37,7 +36,6 @@ const userSlice = createSlice({
       state.loading = action.payload;
     },
     setHasMore(state, action: PayloadAction<boolean>) {
-      // Action to update hasMore
       state.hasMore = action.payload;
     },
     updateUser(state, action: PayloadAction<{ id: number; updates: Partial<User> }>) {
