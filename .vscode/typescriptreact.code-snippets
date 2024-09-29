@@ -1,0 +1,84 @@
+// prettier-ignore
+
+{
+    "FormBuilderSnippetByFilename": {
+      "prefix": "formjsontemp",
+      "description": "Snippet for FormBuilder using filename for naming",
+      "body": [
+        "import { FormSchema } from '../dynamic-form-builder/types';",
+        "",
+        "const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}$0Schema: FormSchema = {}",
+        "",
+        "const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}$0: FormBuilderType = {",
+        "\tname: '${TM_FILENAME_BASE}',",
+        "\tdescription: 'Description here',",
+        "\tcollection: {",
+        "\t\tvalue: 'value here',",
+        "\t\tlabel: 'label here',",
+        "\t},",
+        "\tschema: JSON.stringify(${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}$0Schema),",
+        "\tslug: '${TM_FILENAME_BASE}',",
+        "};",
+        "",
+        "export default ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}$0;"
+      ]
+    },
+  
+  
+    "reactTypescriptFunctionalComponent": {
+        "prefix": "rc",
+        "description": "React Typescript Arrow Functional Component With Export And Module Scss",
+        "body": [
+            "import React from 'react';",
+            "import styles from './${TM_FILENAME_BASE}.module.scss';\n",
+    
+            "interface I${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}$0 {}\n",
+    
+            "const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}$0: React.FC<I${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}$0> = (props) => {",
+            "\tconst {}=props",
+            "\treturn (",
+            "\t\t<div>${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}$0</div>",
+            "\t);",
+            "};\n",
+    
+            "export default ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}$0;\n"
+        ]
+    },
+  
+    "reactUseStateHook": {
+        "prefix": "r-state",
+        "description": "React useState Hook",
+        "body": "const [${1:state}, set${1:state}] = useState(null);"
+    },
+  
+    "reactUseEffectHook": {
+        "prefix": "r-effect",
+        "description": "React useEffect Hook",
+        "body": "useEffect(() => {\n\n}, []);"
+    },
+    
+  
+    "reactMutableUseRefHook": {
+        "prefix": "r-ref-mutable",
+        "description": "React Mutable useRef Hook",
+        "body": "const ${1:input}Ref = useRef<${2:string} | null>(null);"
+    },
+  
+    "reactImmutableUseRefHook": {
+        "prefix": "r-ref-immutable",
+        "description": "React Immutable useRef Hook",
+        "body": "const ${1:input}Ref = useRef<${2:string}>();"
+    },
+  
+    "reactReduxUseDispatchHook": {
+        "prefix": "r-dispatch",
+        "description": "React Redux useDispatch Hook",
+        "body": "const dispatch = useAppDispatch();"
+    },
+  
+    "reactReduxUseSelectorHook": {
+        "prefix": "r-selector",
+        "description": "React Redux useSelector Hook",
+        "body": "const ${1}Data = useAppSelector((state) => state.${1|customer,product,recentProducts,productReviews,cart,currentPlans,customerAddresses,customerPaymentsMethods,renderingConfig,shippingMethods,catsDef,catsDesktopmenu,catsMobilemenu,collectionPage,systemSettings,customerPreferences,spots_left,customerBoards,notification,saleTax,guestCustomer,signupCustomer,serversideReload|});"
+    }
+}
